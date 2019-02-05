@@ -10,7 +10,7 @@ How to install:
 
 1. Clone project:
     ```bash
-            $ git clone 
+            $ git clone git@github.com:sanekzh/pizza.git
     ```       
 
 2. Create and activate virtualenv (python 3.6)
