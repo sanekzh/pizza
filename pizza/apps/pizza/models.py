@@ -13,3 +13,17 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'order'
         verbose_name_plural = 'orders'
+
+
+class Category(models.Model):
+    category = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.category
+
+
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    price = models.FloatField()
+

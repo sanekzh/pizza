@@ -6,7 +6,7 @@ from django.views import View
 from django.core.mail import EmailMessage
 
 from pizza.apps.pizza.form import OrderForm
-from pizza.apps.pizza.models import Order
+from pizza.apps.pizza.models import Order, Category, Product
 
 SUCCESS = 1
 
@@ -15,25 +15,9 @@ class MainPage(View):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        data = {
-            'salmon': 2,
-            'sea_bass': 1.5,
-            'cod': 2,
-            'crab_fillet': 1,
-            'pork': 1.5,
-            'beef': 2,
-            'salami': 1.5,
-            'lamb': 1,
-            'tomato': 1,
-            'cucumber': 1.1,
-            'onions': 2,
-            'pepper': 1,
-            'cheddar': 1.5,
-            'camembert': 1,
-            'gouda': 1.2,
-            'edam': 2.5,
-        }
-        return render(request, self.template_name, data)
+        categories = Category.objects.all().values('id', 'category').order_by('category')
+        products = Product.objects.all().values('id', 'name', 'price', 'category_id')
+        return render(request, self.template_name, {'categories': categories, 'products': products})
 
 
 class CreateOrder(View):
