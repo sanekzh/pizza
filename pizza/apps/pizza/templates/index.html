@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PIZZA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+    <div style="margin-left: 50px">
+        <h1 class="pizza-hat">PIZZA</h1>
+        <div>
+            <br>
+            <h3> Выберите тесто: </h3>
+            <input type="radio" id="white_dough" name="dough" value="white_dough" checked>
+            <label for="white_dough">Белое</label>
+            <input type="radio" id="black_dough" name="dough" value="black_dough">
+            <label for="black_dough">Черное</label>
+        </div>
+        <br>
+        <h2>Начинка</h2>
+        <div>
+            <h3 class="product-title"> Мясо </h3>
+            <table>
+                <tr class="header-table">
+                    <th>Свинина (${{ pork }})</th>
+                    <th>Говядина (${{ beef }})</th>
+                    <th>Салями (${{ salami }})</th>
+                    <th>Баранина (${{ lamb }})</th>
+                </tr>
+                <tr>
+                    <th><input id="pork" type="number" name="pork" min="1" size="5"
+                               data-price="{{ pork }}" data-prod="Свинина"></th>
+                    <th><input id="beef" type="number" name="beef" min="1" size="5"
+                               data-price="{{ beef }}" data-prod="Говядина"></th>
+                    <th><input id="salami" type="number" name="salami" min="1" size="5"
+                               data-price="{{ salami }}" data-prod="Салями"></th>
+                    <th><input id="lamb" type="number" name="lamb" min="1" size="5"
+                               data-price="{{ lamb }}" data-prod="Баранина"></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3 class="product-title"> Рыба </h3>
+            <table>
+                <tr class="header-table">
+                    <th>Сёмга (${{ salmon }})</th>
+                    <th>Морской окунь (${{ sea_bass }})</th>
+                    <th>Треска (${{ cod }})</th>
+                    <th>Крабовое филе (${{ crab_fillet }})</th>
+                </tr>
+                <tr>
+                    <th><input id="salmon" type="number" name="salmon" min="1" size="5"
+                               data-price="{{ salmon }}" data-prod="Сёмга"></th>
+                    <th><input id="sea_bass" type="number" name="sea_bass" min="1" size="5"
+                               data-price="{{ sea_bass }}" data-prod="Морской окунь"></th>
+                    <th><input id="cod" type="number" name="cod" min="1" size="5"
+                               data-price="{{ cod }}" data-prod="Треска"></th>
+                    <th><input id="crab_fillet" type="number" name="crab_fillet" min="1" size="5"
+                               data-price="{{ crab_fillet }}" data-prod="Крабовое филе"></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3 class="product-title"> Овощи </h3>
+            <table>
+                <tr class="header-table">
+                    <th>Помидор (${{ tomato }})</th>
+                    <th>Огурец (${{ cucumber }})</th>
+                    <th>Лук (${{ onions }})</th>
+                    <th>Перец (${{ pepper }})</th>
+                </tr>
+                <tr>
+                    <th><input id="tomato" type="number" name="tomato" min="1" size="5"
+                               data-price="{{ tomato }}" data-prod="Помидор"></th>
+                    <th><input id="cucumber" type="number" name="cucumber" min="1" size="5"
+                               data-price="{{ cucumber }}" data-prod="Огурец"></th>
+                    <th><input id="onions" type="number" name="onions" min="1" size="5"
+                               data-price="{{ onions }}" data-prod="Лук"></th>
+                    <th><input id="pepper" type="number" name="pepper" min="1" size="5"
+                               data-price="{{ pepper }}" data-prod="Перец"></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3 class="product-title"> Сыры </h3>
+            <table>
+                <tr class="header-table">
+                    <th>Чеддер (${{ cheddar }})</th>
+                    <th>Камамбер (${{ camembert }})</th>
+                    <th>Гауда (${{ gouda }})</th>
+                    <th>Эдам (${{ edam }})</th>
+                </tr>
+                <tr>
+                    <th><input id="cheddar" type="number" name="cheddar" min="1" size="5"
+                               data-price="{{ cheddar }}" data-prod="Чеддер"></th>
+                    <th><input id="camembert" type="number" name="camembert" min="1" size="5"
+                               data-price="{{ camembert }}" data-prod="Камамбер"></th>
+                    <th><input id="gouda" type="number" name="gouda" min="1" size="5"
+                               data-price="{{ gouda }}" data-prod="Гауда"></th>
+                    <th><input id="edam" type="number" name="edam" min="1" size="5"
+                               data-price="{{ edam }}" data-prod="Эдам"></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button id="complete_order" type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px">Оформить заказ</button>
+        </div>
+    </div>
+    {% include "order.html" %}
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+        var links = {
+            create_order: "{% url 'pizza:create_order' %}" }
+    </script>
+</body>
+</html>
